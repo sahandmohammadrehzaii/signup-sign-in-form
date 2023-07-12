@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.calculator {
+  width: 400px;
+  margin: 0 auto;
+  border: 2px solid #eaeaea;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="number"],
+select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #75c75d;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover{
+  background-color: #5da75c;
+}
+
+input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+        </style>
+            <style>
+                #center {
+                    text-align: center;
+                    margin-top: 110px;
+                    font-size: 20px;
+                    color: #111;
+              background: #1111;
+                }
+            </style>
+          <!--وسط نسخه یک-->
+          <style>
+            #center-1 {
+              text-align: center;
+              margin-top: 110px;
+              font-size: 40px;
+              color: #FA8072;
+              background: #1111;
+            }
+          </style>
+        <!--راست-->
+        <style>
+          #right {
+            text-align: right;
+            margin-top: 110px;
+            font-size: 40px;
+            color: #FA8072;
+            background: #1111;
+          }
+      </style>
+        <!--چپ-->
+        <style>
+          #left {
+            text-align: left;
+            margin-top: 110px;
+            font-size: 20px;
+            color: #FA8072;
+            background: #1111;
+          }
+      </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>ماشین حساب ساده</h2>
+        <form>
+          <div class="form-group">
+            <label for="num1">عدد اول:</label>
+            <input type="number" id="num1" name="num1" required>
+          </div>
+          <div class="form-group">
+            <label for="num2">عدد دوم:</label>
+            <input type="number" id="num2" name="num2" required>
+          </div>
+          <div class="form-group">
+            <label for="operator">عملگر:</label>
+            <select id="operator" name="operator" required>
+              <option value="">لطفا یک عملگر را انتخاب کنید</option>
+              <option value="+">جمع</option>
+              <option value="-">تفریق</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit">محاسبه</button>
+          </div>
+          <div class="form-group">
+            <label for="result">جواب:</label>
+            <input type="text" id="result" name="result" readonly>
+          </div>
+          <div id="center">
+          <label>&#11015;</label>
+          <input type="checkbox" id="num1" name="num1" required>
+          <div class="form-group">
+            <a href="#">
+            <button type="submit">ورود به داشبورد</button>
+            </a>
+          </div>
+          </div>
+        </form>
+      </div>
+    <script>
+var form = document.querySelector("form");
+var num1Input = document.getElementById("num1");
+var num2Input = document.getElementById("num2");
+var operatorInput = document.getElementById("operator");
+var resultInput = document.getElementById("result");
+
+form.addEventListener("submit", function(event) {
+  var num1 = num1Input.value;
+  var num2 = num2Input.value;
+  var operator = operatorInput.value;
+  var result = 0;
+
+  if (operator === "+") {
+    result = parseInt(num1) + parseInt(num2);
+  } else if (operator === "-") {
+    result = parseInt(num1) - parseInt(num2);
+  } else {
+    alert("لطفا یک عملگر معتبر را انتخاب کنید.");
+    event.preventDefault();
+    return;
+  }
+
+  if (isNaN(result)) {
+    alert("لطفا عدد صحیح و معتبر وارد کنید.");
+    event.preventDefault();
+    return;
+  }
+
+  resultInput.value = result;
+  event.preventDefault();
+});
+        </script>
+</body>
+</html>

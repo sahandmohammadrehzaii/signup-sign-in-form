@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ارسال نظرات|سایت پرکار</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+.comment-section {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.comment-section h3 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+.comment-section form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.comment-section form label {
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: block;
+  font-size: 20px;
+  color: #333;
+}
+
+.comment-section form input,
+.comment-section form textarea {
+  padding: 20px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  background-color: #f7f7f7;
+  color: #333;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-section form button {
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.comment-section form button:hover {
+  background-color: #0056b3;
+}
+
+.comment-section .comments {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-section .comment {
+  margin-bottom: 40px;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment-section .comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.comment-section .comment-header h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.comment-section .comment-header span {
+  font-size: 18px;
+  color: #777;
+}
+
+.comment-section .comment-body {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+#center {
+  text-align: center;
+  margin-top: 110px;
+  font-size: 20px;
+  color: #111;
+  background: #1111;
+}
+
+#center-1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #777;
+}
+
+#center-1 a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+#center-1 a:hover {
+  text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <div id="center">
+        <div class="comment-section">
+            <h3>&#128522;انتظار می رود نظراتتان را درباره خدمات سایت بنویسید&#128522;</h3>
+            <form id="comment-form">
+              <div class="form-group">
+                <label for="username">نام کاربری:</label>
+                <span style='font-size:30px;'>&#10145;</span><input type="text" id="username" name="username" required>
+              </div>
+              <span style='font-size:30px;'>&#11015;</span>
+              <div class="form-group">
+                <label for="comment">نظر شما:</label>
+                <textarea id="comment" name="comment" required></textarea>
+              </div>
+              <button type="submit">ثبت نظر</button>
+            </form>
+            <div id="comments" class="comments">
+              <!-- نظرات ثبت شده به صورت پویا در اینجا قرار می گیرند -->
+            </div>
+          </div>
+    </div>
+    <script>
+      const commentForm = document.getElementById("comment-form");
+const commentsSection = document.getElementById("comments");
+
+commentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Get the values of the form inputs
+  const username = event.target.elements.username.value;
+  const comment = event.target.elements.comment.value;
+
+  // Create a new comment element
+  const commentElement = document.createElement("div");
+  commentElement.classList.add("comment");
+
+  // Create the header of the comment
+  const commentHeader = document.createElement("div");
+  commentHeader.classList.add("comment-header");
+
+  const usernameElement = document.createElement("h3");
+  usernameElement.innerText = username;
+
+  const dateElement = document.createElement("span");
+  const now = new Date();
+  const dateString = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}`;
+  dateElement.innerText = dateString;
+
+  commentHeader.appendChild(usernameElement);
+  commentHeader.appendChild(dateElement);
+
+  // Create the body of the comment
+  const commentBody = document.createElement("div");
+  commentBody.classList.add("comment-body");
+  commentBody.innerText = comment;
+
+  // Add the header and body to the comment element
+  commentElement.appendChild(commentHeader);
+  commentElement.appendChild(commentBody);
+
+  // Add the comment element to the comments section
+  commentsSection.appendChild(commentElement);
+
+  // Reset the form
+  event.target.reset();
+});
+    </script>
+</body>
+</html>
